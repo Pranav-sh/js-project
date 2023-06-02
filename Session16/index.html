@@ -31,21 +31,19 @@
     <p id="leavesCount"></p>
 </body>
 <script>
-    function calculateLeaves() {
+    // Adding key-value pairs to session storage
+    sessionStorage.setItem("Name", "Javascript");
+    sessionStorage.setItem("Type", "Programming");
+    sessionStorage.setItem("Status", "Learning");
 
-        var startDateString = document.getElementById("startDate").value;
-        var endDateString = document.getElementById("endDate").value;
+    // Retrieving the value of the "Name" key from session storage
+    const nameValue = sessionStorage.getItem("Name");
+    console.log("Value of key 'Name':", nameValue);
 
-        var startDate = new Date(startDateString);
-        var endDate = new Date(endDateString);
-
-        var milisecondsPerDay = 24 * 60 * 60 * 1000;
-
-        var diffInDays = Math.round((endDate - startDate) / milisecondsPerDay);
-        var leavesCount = diffInDays + 1;
-
-        document.getElementById("leavesCount").innerHTML = "Total number of leaves :" + leavesCount;
-    }
+    // Removing key-value pair where Type is "Programming"
+    sessionStorage.removeItem("Type");
+    console.log("Updated session storage:", sessionStorage);
 </script>
+
 
 </html>
