@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JS-Code</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        background-color: rgb(232, 252, 252);
+    }
+    
+    h1 {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h1 id="id">Pranav's Task</h1>
+
+</body>
+<script>
+    function countVowels(str) {
+        const lowerCaseStr = str.toLowerCase();
+
+        const vowels = ['a', 'e', 'i', 'o', 'u'];
+        let vowelcount = 0;
+
+        for (let i = 0; i < lowerCaseStr.length; i++) {
+            if (vowels.includes(lowerCaseStr[i])) {
+                vowelcount++;
+            }
+        }
+        return vowelcount;
+    }
+
+    const inputString = "IQRA TECHNOLOGY";
+    const result = countVowels(inputString);
+    console.log("Actually String: ", inputString);
+    console.log("Number of Vowels: ", result);
+</script>
+
+</html>

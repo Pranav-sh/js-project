@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Js10</title>
+</head>
+<style>
+    #mydiv {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        text-align: center;
+        font-size: 20px;
+        color: black;
+        background-color: white;
+        transition: all 0.3s ease;
+        /* Add transition for smooth effect */
+    }
+</style>
+
+<body>
+    <!-- <script src="event2.js"></script>-->
+    <div> created by Pranav</div>
+    <div id="mydiv">Hover Here</div>
+</body>
+<!-- <script>
+    var divelement = document.getElementById("mydiv");
+
+    divelement.addEventListener("mouseenter", function() {
+        divelement.textContent = "You are in the div";
+        divelement.style.color = "yellow";
+        divelement.style.backgroundColor = "black";
+
+    });
+
+    divelement.addEventListener("mouseleave", function() {
+        divelement.textContent = "You are outside of the div";
+        divelement.style.color = "black";
+        divelement.style.backgroundColor = "white";
+
+    });
+</script> -->
+<!-- <script>
+    var Xinput = document.getElementById("mydiv");
+    var count = 0;
+
+    Xinput.addEventListener("input", function() {
+        count++;
+        alert("Number of inputs:" + count);
+    });
+</script> -->
+
+
+<script>
+    var divElement = document.getElementById("mydiv");
+
+    // Event listener for mouseenter event
+    divElement.addEventListener("mouseenter", function() {
+        divElement.style.width = "100%";
+        divElement.style.height = "50%";
+        divElement.style.backgroundColor = "yellow";
+        divElement.style.color = "red";
+    });
+
+    // Event listener for mouseleave event
+    divElement.addEventListener("mouseleave", function() {
+        divElement.style.width = "200px";
+        divElement.style.height = "200px";
+        divElement.style.backgroundColor = "white";
+        divElement.style.color = "black";
+    });
+</script>
+
+
+
+</html>

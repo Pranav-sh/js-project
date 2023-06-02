@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <h1>Number Operations by pranav</h1>
+    <p>Number: 3, 56, 60, 90, 100</p>
+    <button onclick="findMax()">Find Min/Max</button>
+    <p id="minNumber"></p>
+    <p id="maxNumber"></p>
+    <br>
+    <label for="baseNumber">Enter a Base number:</label>
+    <input type="number" id="baseNumber">
+    <button onclick="calculatePower()">calculate Power</button>
+    <p id="powerResult"></p> -->
+
+    <h1>Leave calculator</h1>
+    <label for="startDate">start Date:</label>
+    <input type="date" id="startDate">
+    <br>
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate">
+    <br>
+    <button onclick="calculateLeaves()">calculate</button>
+    <p id="leavesCount"></p>
+</body>
+<script>
+    function calculateLeaves() {
+
+        var startDateString = document.getElementById("startDate").value;
+        var endDateString = document.getElementById("endDate").value;
+
+        var startDate = new Date(startDateString);
+        var endDate = new Date(endDateString);
+
+        var milisecondsPerDay = 24 * 60 * 60 * 1000;
+
+        var diffInDays = Math.round((endDate - startDate) / milisecondsPerDay);
+        var leavesCount = diffInDays + 1;
+
+        document.getElementById("leavesCount").innerHTML = "Total number of leaves :" + leavesCount;
+    }
+</script>
+
+</html>

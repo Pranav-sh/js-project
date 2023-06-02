@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Counter App</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .counter {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            margin: 0 5px;
+        }
+        
+        .reset-button {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Counter App</h1>
+        <div class="button-container">
+            <button class="button" onclick="decrementCounter()">Decrement</button>
+            <div class="counter" id="counter" style="padding: 20px;">0</div>
+            <button class="button" onclick="incrementCounter()">Increment</button>
+        </div>
+        <button class="button reset-button" onclick="resetCounter()">Reset</button>
+    </div>
+
+    <script>
+        let counterValue = 0;
+        const counterElement = document.getElementById("counter");
+
+        function incrementCounter() {
+            counterValue++;
+            updateCounter();
+        }
+
+        function decrementCounter() {
+            counterValue--;
+            updateCounter();
+        }
+
+        function resetCounter() {
+            counterValue = 0;
+            updateCounter();
+        }
+
+        function updateCounter() {
+            counterElement.textContent = counterValue;
+        }
+    </script>
+</body>
+
+</html>

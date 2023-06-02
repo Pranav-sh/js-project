@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <h1>created by pranav</h1>
+    <script>
+        function addElement(className, text) {
+            // Create the element
+            var newElement = document.createElement("div");
+            newElement.className = className;
+
+            // Create the text node
+            var newText = document.createTextNode(text);
+
+            // Append the text node to the element
+            newElement.appendChild(newText);
+
+            // Append the element to the body
+            document.body.appendChild(newElement);
+
+            // Print the result on the page
+            var resultText = "Element added: <" + newElement.tagName.toLowerCase() + " class='" + className + "'>" + text + "</" + newElement.tagName.toLowerCase() + ">";
+            var resultElement = document.createElement("p");
+            resultElement.innerHTML = resultText;
+            document.body.appendChild(resultElement);
+        }
+
+        // Prompt for element name and text node
+        var elementName = prompt("Enter the element name (e.g., div):");
+        var textNode = prompt("Enter the text node:");
+
+        // Call the addElement function with the provided parameters
+        addElement(elementName, textNode);
+    </script>
+</body>
+
+</html>

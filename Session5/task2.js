@@ -1,0 +1,1 @@
+a = prompt("Enter first value:");

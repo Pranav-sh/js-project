@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            min-height: 100vh;
+            background: cadetblue;
+            display: grid;
+            place-items: center;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            font-size: 1.25rem;
+            width: 100%;
+        }
+        
+        input {
+            margin: 1em 0;
+            padding: 0.5em 0.75em;
+            width: 100%;
+        }
+        
+        select {
+            margin: 1em 0;
+            width: 100%;
+            padding: 0.5em 0.75em;
+        }
+        
+        button {
+            margin-top: 3rem;
+        }
+        
+        .input-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card {
+            width: min(500px, 90%);
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 1.5em 2em;
+        }
+        
+        .calculate {
+            padding: 0.75em 0;
+            background: cornflowerblue;
+            color: white;
+            text-transform: capitalize;
+            font-weight: 700;
+            border: none;
+        }
+        
+        .calculate:hover {
+            opacity: 0.7;
+        }
+        
+        .reset {
+            padding: 0.75em 0;
+            background: rgb(100, 237, 157);
+            color: white;
+            text-transform: capitalize;
+            font-weight: 700;
+            border: none;
+        }
+        
+        @media (max-width: 450px) {
+            .input-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <title>Discount Calculator</title>
+</head>
+
+<body>
+    <div class="card">
+        <h1> Pranav Discount Calculator</h1>
+        <form action="#">
+            <div class="input-item">
+                <label for="amount"> Enter bill amount: </label>
+                <input type="text" id="amount">
+            </div>
+
+            <div class="input-item">
+                <label for="discount-percentage">Select discount %</label>
+                <select name="percentage" id="discount-percentage">
+                    <option value="0">0</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                </select>
+            </div>
+
+            <div class="input-item">
+                <label for="discount-amount"> Discount amount: </label>
+                <input type="text" id="discount-amount" disabled>
+            </div>
+
+            <div class="input-item">
+                <label for="pay" aria-disabled="true"> Final Pay:</label>
+                <input type="text" id="pay" disabled>
+            </div>
+
+            <button type="submit" class="calculate">calculate</button>
+            <input type="reset" value="Reset" onClick="window.location.reload()" class="reset">
+        </form>
+    </div>
+
+    <script>
+        const calculate = document.querySelector('.calculate');
+
+        calculate.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const billAmt = document.getElementById('amount').value;
+
+            const percentage = document.getElementById('discount-percentage').value;
+
+            const discountAmt = document.getElementById('discount-amount');
+            const FinalPay = document.getElementById('pay');
+
+
+            discountAmt.value = billAmt * percentage / 100;
+            FinalPay.value = billAmt - discountAmt.value;
+        });
+    </script>
+</body>
+
+</html>

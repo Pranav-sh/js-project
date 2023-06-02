@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PO Details by Pranav</title>
+</head>
+
+
+<body>
+    <div id="container" style="display:flex; width:100;">
+        <div style="width:50%;">
+            <div class="col-5" style="height:100vh; display:flex; margin-left:25%;">
+                <form action="" style="width:100%; display:flex; justify-content:center; " name="stud" id="stud">
+                    <div style="height:70%; width:80%; background-color:white; ">
+                        <h1 style="text-align: center; color:black;">PO Details Form </h1>
+
+                        <div style="color:red;">
+                            <h3><span class="error"></span></h3>
+                        </div>
+                        <div class="row" style="margin-top: 20px !important; margin-left:20px;">
+                            <label for="">Supplier Name</label>
+                            <input type="text" id="suppliername" style="border: 1px solid black;">
+                        </div>
+                        <div class="row" style="margin-top: 20px !important; margin-left:20px;">
+                            <label for="">PO value:</label>
+                            <input type="text" id="POvalue" style="border: 1px solid black;">
+                        </div>
+                        <div class="row" style="margin-top: 20px !important; margin-left:20px;">
+                            <label for="">Re-Enter PO value:</label>
+                            <input type="text" id="ReEnter" style="border: 1px solid black;">
+                        </div>
+                        <div class="row" style="margin-top: 20px !important; margin-left:20px;">
+                            <label for="">Paid Amt:</label>
+                            <input type="text" id="paid" style="border: 1px solid black;">
+                        </div>
+                        <div class="row" style="margin-top: 20px !important; margin-left:20px;">
+                            <label for="">Status</label>
+                            <input type="text" id="status" style="border: 1px solid black;" placeholder="Fail" disabled>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <button id="val" onclick="getValidation()" type="submit" style="background-color: skyblue; color:black; margin-left:20px;">Submit</button>
+                        </div>
+                        <div class="row">
+                            <button id="sub" type="submit" style="background-color: green; color:black; margin-left:20px;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <br>
+                <div style="width:50%;" class="col-5">
+                    <table class="table" style="width:50%;">
+                        <thead style="border:1px solid green; ">
+                            <tr>
+                                <th style="padding:10px;">Name</th>
+                                <th style="padding:10px;">Po Number</th>
+                                <th style="padding:10px;">Paid Amount</th>
+                                <th style="padding:10px;">Success</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody" style="text-align: center;">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </tbody>
+</body>
+<script>
+    const name = document.querySelector("#suppliername");
+    const PoVal = document.querySelector("#POvalue");
+    const ReEnter = document.querySelector("#ReEnter");
+    const Paid = document.querySelector("#paid");
+    const Status = document.querySelector("#status");
+    const submit = document.querySelector("#sub");
+
+    const Error = document.querySelector(".error");
+
+    function getValidation() {
+        var Regex = /[0-9]/;
+        let valid = Regex.test(PoVal.value);
+        let POreCheck = Regex.test(ReEnter.value);
+        const paidamt = Regex.test(Paid.value);
+
+        if (name.value.length <= 5 || name.value.length >= 15) {
+            Error.innerHTML = "Please Enter Name in Between 5 to 15 in length";
+            name.style.border = "2px solid red";
+        } else if (!valid) {
+            name.style.border = "2px solid green";
+            Error.innerHTML = "Please Enter Number Only";
+            PoVal.style.border = "2px solid red";
+        } else if (ReEnter.value != PoVal.value) {
+            PoVal.style.border = "2px solid green";
+            Error.innerHTML = "Please Enter Povalue as same as Above";
+            ReEnter.style.border = "2px solid red";
+        } else if (!paidamt) {
+            ReEnter.style.border = "2px solid green";
+            Error.innerHTML = "Please Enter Number";
+            Paid.style.border = "2px solid red";
+        } else {
+            name.style.border = "2px solid green";
+            ReEnter.style.border = "2px solid green ";
+            PoVal.style.border = "2px solid green";
+            Paid.style.border = "2px solid green";
+            Status.placeholder = "Success";
+            // document.querySelector("#sub").style.display = "block";
+            //document.querySelector("#val").style.display = "none";
+        }
+    }
+    document.querySelector("#val").addEventListener("click", (event) => {
+        event.preventDefault();
+        getValidation();
+    })
+    submit.addEventListener('click', (a) => {
+        a.preventDefault();
+    })
+    submit.addEventListener("click", () => {
+        alert("working");
+        if (Status.placeholder == "Success") {
+            document.querySelector("#tbody").innerHTML +=
+                `<tr>
+                <td>${name.value}</td>
+                <td>${PoVal.value}</td>
+                <td>${Paid.value}</td>
+                <td>Success</td>
+            </tr>`
+            document.querySelector("#stud").reset();
+            name.style.border = " ";
+            ReEnter.style.border = " ";
+            PoVal.style.border = "";
+            Paid.style.border = "2px solid green";
+            Status.placeholder = "fail";
+
+        } else {
+            alert("sorry");
+        }
+    })
+</script>
+
+</html>

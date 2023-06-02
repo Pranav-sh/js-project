@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h2 {
+        text-align: center;
+        background-color: darkolivegreen;
+        color: aliceblue;
+    }
+    
+    hr {
+        clear: both;
+    }
+</style>
+
+<body>
+    <h2>github users (FETCH API) by pranav</h2>
+    <div style="width:80%; margin:auto;">
+        <div>
+            <div id="userDetail" style="float:left; width:50%;">
+                <h2>Please select a user</h2>
+            </div>
+
+            <div id="userList" style="float:right; width:50%;"></div>
+        </div>
+    </div>
+    <script>
+        async function loadUsers() {
+            let userList = document.getElementById('userList');
+            let response = await fetch("https://api.github.com/users");
+            let users = await response.json();
+            let ul = document.createElement("ul");
+            ul.style.listStyleType = "none";
+            for (const usr of users) {
+                let li = document.createElement("li");
+                let div1 = document.createElement("div");
+
+                div1.innerHTML = "<h2><button onclick=\"showUserDetail('" +
+                    usr.login +
+                    "')\">" + usr.login + "</button></h2>";
+                let div2 = document.createElement("div");
+                div2.style.float = "right";
+                div2.innerHTML = `<img src="${usr.avatar_url}" alt="${usr.login}" height="50px"/>`;
+                let hr = document.createElement("hr");
+                li.appendChild(div1);
+                li.appendChild(div2);
+                li.appendChild(hr);
+                ul.appendChild(li);
+            }
+            userList.appendChild(ul);
+        }
+
+        async function showUserDetail(login) {
+            let userDetail = document.getElementById("userDetail");
+            userDetail.innerHTML = "";
+            let url = "https://api.github.com/users/" + login;
+            let userResponse = await fetch(url);
+            let userData = await userResponse.json();
+            let content =
+                `
+            <div>
+                <h2>${userData.name}</h2>
+                <p>${userData.id}</p>
+                <img src="${userData.avatar_url}" alt="${userData.id}" width="250px"/>
+            </div>`;
+            userDetail.innerHTML = content;
+        }
+
+        loadUsers();
+    </script>
+</body>
+
+</html>
