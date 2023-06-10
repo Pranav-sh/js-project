@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock Paper Scissors Game</title>
+</head>
+
+<body>
+    <h2>Rock Paper Scissors Game</h2>
+    <label for="name">Enter your name:</label>
+    <input type="text" id="nameInput" placeholder="Your name">
+    <br><br>
+    <button onclick="startGame()">Start Game</button>
+    <button onclick="restartGame()">Restart Game</button>
+    <br><br>
+    <p id="result"></p>
+    <p id="score"></p>
+    <p id="moves"></p>
+
+    <script>
+        let name = '';
+        let playerScore = 0;
+        let computerScore = 0;
+        let movesLeft = 3; // Number of moves allowed for the user
+        const moves = ['rock', 'paper', 'scissors'];
+        const resultElement = document.getElementById('result');
+        const scoreElement = document.getElementById('score');
+        const movesElement = document.getElementById('moves');
+
+        function startGame() {
+            name = document.getElementById('nameInput').value;
+            if (name.trim() === '') {
+                alert('Please enter your name.');
+                return;
+            }
+            resultElement.textContent = '';
+            scoreElement.textContent = '';
+            movesElement.textContent = '';
+
+            const buttons = document.createElement('div');
+            buttons.innerHTML = `
+        <button onclick="play('rock')">Rock</button>
+        <button onclick="play('paper')">Paper</button>
+        <button onclick="play('scissors')">Scissors</button>
+      `;
+
+            document.body.appendChild(buttons);
+            movesElement.textContent = `Moves left: ${movesLeft}`;
+        }
+
+        function play(playerMove) {
+            if (movesLeft === 0) {
+                alert('No moves left. Please restart the game.');
+                return;
+            }
+
+            const computerMove = getRandomMove();
+            const result = getResult(playerMove, computerMove);
+            resultElement.textContent = `Result: ${result}`;
+            movesElement.textContent += `${name}: ${playerMove} - Computer: ${computerMove}\n`;
+
+            if (result === 'You win!') {
+                playerScore++;
+            } else if (result === 'Computer wins!') {
+                computerScore++;
+            }
+
+            scoreElement.textContent = `${name}: ${playerScore} - Computer: ${computerScore}`;
+            movesLeft--;
+
+            if (movesLeft === 0) {
+                endGame();
+            } else {
+                movesElement.textContent = `Moves left: ${movesLeft}`;
+            }
+        }
+
+        function getRandomMove() {
+            const randomIndex = Math.floor(Math.random() * moves.length);
+            return moves[randomIndex];
+        }
+
+        function getResult(playerMove, computerMove) {
+            if (playerMove === computerMove) {
+                return "It's a tie!";
+            } else if (
+                (playerMove === 'rock' && computerMove === 'scissors') ||
+                (playerMove === 'paper' && computerMove === 'rock') ||
+                (playerMove === 'scissors' && computerMove === 'paper')
+            ) {
+                return 'You win!';
+            } else {
+                return 'Computer wins!';
+            }
+        }
+
+        function endGame() {
+            const buttons = document.getElementsByTagName('div')[0];
+            if (buttons) {
+                buttons.remove();
+            }
+            movesElement.textContent = '';
+
+            if (playerScore > computerScore) {
+                resultElement.textContent = `Game over! ${name} wins!`;
+            } else if (playerScore < computerScore) {
+                resultElement.textContent = 'Game over! Computer wins!';
+            } else {
+                resultElement.textContent = "Game over! It's a tie!";
+            }
+
+            scoreElement.textContent = `${name}: ${playerScore} - Computer: ${computerScore}`;
+        }
+
+        function restartGame() {
+            name = '';
+            playerScore = 0;
+            computerScore = 0;
+            movesLeft = 3;
+            resultElement.textContent = '';
+            scoreElement.textContent = '';
+            movesElement.textContent = '';
+
+            const buttons = document.getElementsByTagName('div')[0];
+            if (buttons) {
+                buttons.remove();
+            }
+        }
+    </script>
+</body>
+
+</html>

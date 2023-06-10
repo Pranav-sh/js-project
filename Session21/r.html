@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BOM Navigation</title>
+</head>
+
+<body>
+    <h2>BOM Navigation</h2>
+    <button onclick="goBackToW3Schools()">Go Back to W3Schools HTML Page</button>
+
+    <script>
+        function goBackToW3Schools() {
+            // Go back to Google's home page
+            history.go(-1);
+
+            // Go back to the W3Schools HTML page
+            setTimeout(function() {
+                history.go(-1);
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>

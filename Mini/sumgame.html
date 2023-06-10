@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .App {
+            text-align: center;
+        }
+        
+        .App-logo {
+            animation: App-logo-spin infinite 20s linear;
+            height: 60px;
+        }
+        
+        .App-header {
+            background-color: #222;
+            height: 180px;
+            padding: 20px;
+            color: white;
+        }
+        
+        .App-intro {
+            font-size: large;
+        }
+        
+        @keyframes App-logo-spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .text-info {
+            color: #fff;
+            font-weight: bold;
+            font-size: 2.1rem;
+        }
+        
+        .question {
+            font-size: 2rem;
+        }
+        
+        .options {
+            margin: 5%;
+            display: flex;
+            margin-right: -12px;
+            margin-left: -12px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: stretch;
+            flex: 1 0 auto;
+        }
+        
+        .fields {
+            display: flex;
+            padding: 12px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            flex: 1;
+        }
+        
+        .field-block {
+            display: flex;
+            min-height: 160px;
+            padding: 10%;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            /*flex: 1 0 auto;*/
+            border-radius: 4px;
+            background-color: #f9bad0;
+            font-size: 6rem;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .quiz {
+            color: #ddd;
+            margin: 2%;
+            background-color: #ec1561;
+            padding: 2%;
+            width: 90%;
+            position: relative;
+        }
+        
+        .button {
+            display: flex;
+            height: 48px;
+            padding-right: 16px;
+            padding-left: 16px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            flex: 0 0 auto;
+            border-radius: 4px;
+            background-color: #2fcaaa;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .05), 0 2px 12px 0 rgba(0, 0, 0, .1);
+            transition: box-shadow 200ms ease-out;
+            color: #fff;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .quiz .after {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            width: 90%;
+            height: 80%;
+            /*display: none;*/
+            color: #FFF;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            opacity: 0.8;
+            font-size: 3rem;
+        }
+        
+        .correct {
+            background-color: green;
+        }
+        
+        .wrong {
+            background-color: #D91E18;
+        }
+        
+        .hide {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz">
+        <div class="quiz-content">
+            <div class="question">
+                What is the sum of <span class="text-info" id="field1">5</span> and <span class="text-info" id="field2">5</span>?
+            </div>
+            <div class="options">
+                <div class="fields animated zoomIn">
+                    <div class="field-block" id="option1" onclick="checkAnswer(this)">
+                        10
+                    </div>
+                </div>
+                <div class="fields animated zoomIn">
+                    <div class="field-block" id="option2" onclick="checkAnswer(this)">
+                        10
+                    </div>
+                </div>
+                <div class="fields animated zoomIn">
+                    <div class="field-block" id="option3" onclick="checkAnswer(this)">
+                        10
+                    </div>
+                </div>
+                <div class="fields animated zoomIn">
+                    <div class="field-block" id="option4" onclick="checkAnswer(this)">
+                        10
+                    </div>
+                </div>
+            </div>
+            <div class="after hide" id="after">
+
+            </div>
+            <div class="play-again">
+                <a class="button" onclick="playAgain()">Play Again</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    playGame();
+
+    var riddle = {};
+
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    function playGame() {
+        var field1 = randomNumber(20, 50);
+        var field2 = randomNumber(20, 50);
+        var result = field1 + field2;
+        var resultsArray = generateRandomOptions(result);
+        resultsArray.push(result);
+        resultsArray.sort(function(a, b) {
+            return 0.5 - Math.random()
+        });
+
+        riddle = {
+            field1: field1,
+            field2: field2,
+            resultsArray: resultsArray,
+            answer: result
+        };
+
+        document.getElementById("field1").innerHTML = riddle.field1;
+        document.getElementById("field2").innerHTML = riddle.field2;
+        document.getElementById("option1").innerHTML = riddle.resultsArray[0];
+        document.getElementById("option2").innerHTML = riddle.resultsArray[1];
+        document.getElementById("option3").innerHTML = riddle.resultsArray[2];
+        document.getElementById("option4").innerHTML = riddle.resultsArray[3];
+
+        function generateRandomOptions(sum) {
+            var resultsArray = [];
+            var randomNumberArray = [];
+            var addSubtract = randomNumber(0, 1);
+            while (randomNumberArray.length < 3) {
+                var random = randomNumber(1, 10);
+                if (randomNumberArray.indexOf(random) > -1) continue;
+                randomNumberArray.push(random);
+            }
+
+            for (var i = 0; i < 3; i++) {
+                var addSubtract = randomNumber(0, 1);
+                var result = sum;
+                if (addSubtract === 1) {
+                    result += randomNumberArray[i];
+                } else {
+                    result += randomNumberArray[i];
+                }
+                resultsArray.push(result);
+            }
+
+            return resultsArray;
+        }
+    }
+
+
+    function checkAnswer(selectedElement) {
+        if (selectedElement.innerHTML == riddle.answer) {
+            after.classList.remove('hide');
+            after.classList.add('correct');
+            after.classList.add('animated');
+            after.classList.add('zoomInDown');
+            after.innerHTML = "Good Job! Hit the Play Again Button."
+        } else {
+            after.classList.remove('hide');
+            after.classList.add('wrong');
+            after.innerHTML = 'Ohh Ohh! You Missed it...'
+        }
+    }
+
+
+    function playAgain() {
+        var after = document.getElementById('after');
+        after.classList.remove('wrong');
+        after.classList.remove('correct');
+        after.classList.add('hide');
+        playGame();
+    }
+</script>
+
+</html>

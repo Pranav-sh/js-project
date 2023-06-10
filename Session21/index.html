@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fetch API Example</title>
+</head>
+
+<body>
+    <h2>Fetch API Example</h2>
+    <button onclick="fetchData()">Fetch Data</button>
+    <pre id="output"></pre>
+
+    <script>
+        function fetchData() {
+            fetch('https://api.github.com/users/openai')
+                .then(response => response.json())
+                .then(data => {
+                    const outputElement = document.getElementById('output');
+
+                    outputElement.textContent = '';
+
+                    // Output in JSON form
+                    outputElement.textContent += 'Output in JSON form:\n';
+                    outputElement.textContent += JSON.stringify(data, null, 2) + '\n\n';
+
+                    // Output in text form
+                    outputElement.textContent += 'Output in text form:\n';
+                    outputElement.textContent += JSON.stringify(data) + '\n\n';
+
+                    // Output as a JavaScript object
+                    outputElement.textContent += 'Output as a JavaScript object:\n';
+                    outputElement.textContent += JSON.parse(JSON.stringify(data));
+                })
+                .catch(error => {
+                    const outputElement = document.getElementById('output');
+                    outputElement.textContent = 'An error occurred while fetching the data: ' + error;
+                });
+        }
+    </script>
+</body>
+
+</html>

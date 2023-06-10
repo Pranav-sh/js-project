@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Multiplication Table</title>
+</head>
+
+<body>
+    <h2>Multiplication Table</h2>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <button onclick="generateTable()">Generate Table</button>
+    <table id="table"></table>
+
+    <script>
+        function generateTable() {
+            const number = document.getElementById('numberInput').value;
+            const tableElement = document.getElementById('table');
+            tableElement.innerHTML = '';
+
+            for (let i = 1; i <= 10; i++) {
+                const result = number * i;
+                const row = document.createElement('tr');
+                const expressionCell = document.createElement('td');
+                const equalsCell = document.createElement('td');
+                const resultCell = document.createElement('td');
+
+                expressionCell.textContent = number + ' * ' + i;
+                equalsCell.textContent = '=';
+                resultCell.textContent = result;
+
+                row.appendChild(expressionCell);
+                row.appendChild(equalsCell);
+                row.appendChild(resultCell);
+
+                tableElement.appendChild(row);
+            }
+        }
+    </script>
+</body>
+
+</html>

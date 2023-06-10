@@ -30,6 +30,7 @@
 //     constructor(marks) {
 //         this.marks = marks;
 //     }
+
 //     calculateAverage() {
 //         const sum = this.marks.reduce((total, mark) => total + mark, 0);
 //         return sum / this.marks.length;
@@ -40,7 +41,7 @@
 // const marksObj = new Marks(marks);
 // const average = marksObj.calculateAverage();
 
-// console.log("The average of the total marks is: ${average}");
+// console.log(`The average of the total marks is: ${average}`);
 
 
 
@@ -64,25 +65,46 @@
 
 
 
-class Student {
-    constructor(name, marks) {
-        this.name = name;
-        this.marks = marks;
-    }
+// class Student {
+//     constructor(name, marks) {
+//         this.name = name;
+//         this.marks = marks;
+//     }
 
-    calculateAverage() {
-        const sum = this.marks.reduce((total, mark) => total + mark, 0);
-        return sum / this.marks.length;
-    }
+//     calculateAverage() {
+//         const sum = this.marks.reduce((total, mark) => total + mark, 0);
+//         return sum / this.marks.length;
+//     }
+// }
+
+// const students = [
+//     { name: "pranav", marks: [1, 2, 3, 4] },
+// ];
+// students.forEach((student) => {
+//     const studentObj = new Student(student.name, student.marks);
+//     const average = studentObj.calculateAverage();
+
+//     console.log('The name of the student is ${student.name} and the average of all marks (${student.marks.join(", ")}) is: ${average}');
+
+// });
+
+
+// Define an array of student objects
+const students = [
+    { name: "kausain", marks: [1, 2, 3, 4] },
+    { name: "nousain", marks: [1, 2, 3, 4] },
+    { name: "Ioru", marks: [1, 2, 3, 4] },
+    { name: "Sunny", marks: [1, 2, 3, 4] }
+];
+
+// Function to calculate the average of an array of numbers
+function calculateAverage(numbers) {
+    const sum = numbers.reduce((total, current) => total + current, 0);
+    return sum / numbers.length;
 }
 
-const students = [
-    { name: "pranav", marks: [1, 2, 3, 4] },
-];
-students.forEach((student) => {
-    const studentObj = new Student(student.name, student.marks);
-    const average = studentObj.calculateAverage();
-
-    console.log('The name of the student is ${student.name} and the average of all marks (${student.marks.join(", ")}) is: ${average}');
-
+// Print the name and average marks for each student
+students.forEach(student => {
+    const average = calculateAverage(student.marks);
+    console.log(`The Name of the Student is ${student.name} and The Average of all Marks (${student.marks.join(", ")}) is ${average}`);
 });

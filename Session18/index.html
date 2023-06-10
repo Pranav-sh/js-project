@@ -6,7 +6,18 @@
 </head>
 
 <body>
-    <script src="script.js"></script>
+    <script>
+        try {
+            // Your code that may throw an error
+            throw new Error("This is an example error.");
+        } catch (error) {
+            // Error handling
+            console.error("An error occurred:", error.message);
+        } finally {
+            // Code that will always execute, regardless of an error
+            console.log("I am finally");
+        }
+    </script>
 </body>
 
 </html>

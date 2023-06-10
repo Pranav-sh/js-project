@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Js20</title>
+</head>
+
+<body>
+    <h2>Email Validation</h2>
+    <input type="text" id="email" placeholder="Enter your email">
+    <button onclick="validateEmail()">Submit</button>
+    <p id="errorMessage" style="color: red;"></p>
+
+    <script>
+        function validateEmail() {
+            const emailInput = document.getElementById('email').value;
+            const errorMessageElement = document.getElementById('errorMessage');
+            errorMessageElement.textContent = '';
+
+            // Check if the email contains "@", ".com", "gmail", and in the proper format
+            const regex = /^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!regex.test(emailInput) || !emailInput.includes("@") || !emailInput.includes(".com") || !emailInput.includes("gmail")) {
+                errorMessageElement.textContent = 'Error: Please enter a valid email address.';
+                return;
+            }
+
+            // Email is valid
+            alert('Email is valid!');
+        }
+    </script>
+</body>
+
+</html>

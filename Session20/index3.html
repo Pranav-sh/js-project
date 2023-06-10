@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Js20</title>
+</head>
+
+<body>
+    <h2>Replace Text</h2>
+    <input type="text" id="textInput" placeholder="Enter your text">
+    <button onclick="replaceText()">Replace</button>
+    <p id="output"></p>
+
+    <script>
+        function replaceText() {
+            const inputText = document.getElementById('textInput').value;
+            const outputElement = document.getElementById('output');
+
+            // Replace "HTML" with "JavaScript" using regular expression
+            const regex = /HTML/gi;
+            const replacedText = inputText.replace(regex, 'JavaScript');
+
+            outputElement.textContent = replacedText;
+        }
+    </script>
+</body>
+
+</html>

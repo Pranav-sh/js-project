@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js19</title>
+</head>
+
+<body><input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="startTask()">Start Task</button>
+    <p id="taskOutput"></p>
+    <p id="statusOutput"></p>
+
+</body>
+<script>
+    // Function to start the task
+    function startTask() {
+        const taskInput = document.getElementById('taskInput');
+        const taskOutput = document.getElementById('taskOutput');
+        const statusOutput = document.getElementById('statusOutput');
+
+        if (!taskInput || !taskOutput || !statusOutput) {
+            console.error('Failed to find necessary elements.');
+            return;
+        }
+
+        const task = taskInput.value;
+
+        // Update the task on the document
+        taskOutput.textContent = `Task: ${task}`;
+
+        // Prompt the user after 5 seconds
+        setTimeout(() => {
+            const response = prompt("Has the task been completed? (Yes/No)");
+
+            if (response && response.toLowerCase() === 'yes') {
+                statusOutput.textContent = 'Promise fulfilled';
+                statusOutput.style.color = 'green';
+            } else {
+                statusOutput.textContent = 'Promise unfulfilled';
+                statusOutput.style.color = 'red';
+            }
+        }, 5000);
+    }
+</script>
+
+
+</html>

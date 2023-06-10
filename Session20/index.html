@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Js20</title>
+</head>
+
+<body>
+    <h2>Mobile Number Validation</h2>
+    <input type="text" id="mobileNumber" placeholder="Enter your mobile number">
+    <button onclick="validateMobileNumber()">Submit</button>
+    <p id="errorMessage" style="color: red;"></p>
+
+    <script>
+        function validateMobileNumber() {
+            const mobileNumberInput = document.getElementById('mobileNumber').value;
+            const errorMessageElement = document.getElementById('errorMessage');
+            errorMessageElement.textContent = '';
+
+            // Remove any whitespace from the input
+            const mobileNumber = mobileNumberInput.replace(/\s/g, '');
+
+            // Check if the mobile number is exactly 10 digits
+            if (mobileNumber.length !== 10) {
+                errorMessageElement.textContent = 'Error: Mobile number should be exactly 10 digits.';
+                return;
+            }
+
+            // Check if the mobile number contains only digits
+            if (!/^\d+$/.test(mobileNumber)) {
+                errorMessageElement.textContent = 'Error: Mobile number should contain only digits.';
+                return;
+            }
+
+            // Mobile number is valid
+            alert('Mobile number is valid!');
+        }
+    </script>
+</body>
+
+</html>
