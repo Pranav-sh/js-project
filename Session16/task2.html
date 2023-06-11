@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Program 2: Finding the Minimum and Maximum Number</title>
+    <script>
+        function findMinMax() {
+            var number = [3, 56, 60, 90, 100];
+            var minNumber = Math.min(...number);
+            var maxNumber = Math.max(...number);
+
+            document.getElementById('minNumber').innerHTML = "Minimum Number: " + minNumber;
+            document.getElementById('maxNumber').innerHTML = "Maximum Number: " + maxNumber;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Program 2: Finding the Minimum and Maximum Number</h1>
+    <button onclick="findMinMax()">Find Min and Max</button>
+    <p id="minNumber">Minimum Number: </p>
+    <p id="maxNumber">Maximum Number: </p>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Program 2: Marks and Average</title>
+    <script>
+        class Marks {
+            constructor(marks) {
+                this.marks = marks;
+            }
+
+            calculateAverage() {
+                const sum = this.marks.reduce((total, mark) => total + mark, 0);
+                return sum / this.marks.length;
+            }
+        }
+
+        const marks = [80, 75, 90, 88];
+        const marksObj = new Marks(marks);
+        const average = marksObj.calculateAverage();
+
+        console.log(`The average of the total marks is: ${average}`);
+    </script>
+</head>
+
+<body>
+    <h1>Program 2: Marks and Average</h1>
+    <script src="script2.js"></script>
+</body>
+
+</html>

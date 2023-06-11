@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Program 1: Bike and Model</title>
+    <script>
+        class Bike {
+            constructor(brand) {
+                this.brandname = brand;
+            }
+            showData() {
+                return "My Book " + this.brandname + " hi";
+            }
+            apple() {
+                return " // Example //";
+            }
+        }
+        class Model extends Bike {
+            constructor(brand, year) {
+                super(brand);
+                this.year = year;
+            }
+            show() {
+                return this.showData() + this.apple() + " and I'm Jan";
+            }
+        }
+
+        let bike1 = new Model("KIM", 2021);
+        document.write(bike1.show());
+
+        let bike2 = new Model("Honda", 2021);
+        document.write(bike2.showData());
+    </script>
+</head>
+
+<body>
+    <h1>Program 1: Bike and Model</h1>
+    <script src="script1.js"></script>
+</body>
+
+</html>

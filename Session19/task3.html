@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task and Prompt Example</title>
+</head>
+
+<body>
+    <label for="taskInput">Enter a task:</label>
+    <input type="text" id="taskInput">
+    <button onclick="startTask()">Start Task</button>
+    <h3 id="taskOutput"></h3>
+    <h3 id="statusOutput"></h3>
+    <script>
+        function startTask() {
+            const taskInput = document.getElementById('taskInput');
+            const task = taskInput.value;
+
+            document.getElementById('taskOutput').textContent = `Task: ${task}`;
+
+            setTimeout(() => {
+                const response = prompt("Has the task been completed? (Yes/No)");
+
+                if (response && response.toLowerCase() === 'yes') {
+                    document.getElementById('statusOutput').textContent = 'Promise fulfilled';
+                    document.getElementById('statusOutput').style.color = 'green';
+                } else {
+                    document.getElementById('statusOutput').textContent = 'Promise unfulfilled';
+                    document.getElementById('statusOutput').style.color = 'red';
+                }
+            }, 5000);
+        }
+    </script>
+</body>
+
+</html>

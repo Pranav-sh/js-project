@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Program 1: Generating a Random Number</title>
+    <script>
+        function generateRandomNumber() {
+            var randomNumber = Math.random();
+            var scaledNumber = (randomNumber * 20) + 40;
+            var final = Math.round(scaledNumber);
+
+            document.getElementById('randomNumber').innerHTML = "Random Number: " + final;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Program 1: Generating a Random Number</h1>
+    <button onclick="generateRandomNumber()">Generate Random Number</button>
+    <p id="randomNumber">Random Number: </p>
+</body>
+
+</html>

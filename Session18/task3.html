@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Map Example 2</title>
+    <script>
+        const map = new Map();
+
+        const key1 = {
+            id: 1
+        };
+        const value1 = {
+            name: "John"
+        };
+        map.set(key1, value1);
+
+        const key2 = {
+            id: 2
+        };
+        const value2 = {
+            name: "Jane"
+        };
+        map.set(key2, value2);
+
+        const key3 = {
+            id: 3
+        };
+        const value3 = {
+            name: "Bob"
+        };
+        map.set(key3, value3);
+
+        console.log("Value for key1:", map.get(key1));
+        console.log("Value for key2:", map.get(key2));
+        console.log("Value for key3:", map.get(key3));
+
+        map.forEach((value, key) => {
+            console.log(`Key: ${key}, Value: ${value}`);
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Map Example 2</h1>
+    <script src="script.js"></script>
+</body>
+
+</html>

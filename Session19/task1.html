@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Change Color Example 1</title>
+    <style>
+        h1 {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="paragraph">Click me to change color</h1>
+    <script>
+        const paragraph = document.getElementById('paragraph');
+
+        function changeColor() {
+            const randomColor = getRandomColor();
+            paragraph.style.color = randomColor;
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        paragraph.addEventListener('click', changeColor);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Program 1: Adding a Random Number to the End of an Array</title>
+
+</head>
+
+<body>
+    <h1>Program 1: Adding a Random Number to the End of an Array</h1>
+    <button onclick="addRandomNumber()">Add Random Number</button>
+    <p id="result">Array: 1, 2, 3, 4, 5</p>
+</body>
+<script>
+    let numbers = [1, 2, 3, 4, 5];
+
+    function addRandomNumber() {
+        // Generate a random number between 0 and 10
+        const randomNum = Math.floor(Math.random() * 11);
+
+        // Add the random number to the last index of the array
+        numbers.push(randomNum);
+
+        // Display the updated array on the document
+        document.getElementById("result").innerHTML = "Array: " + numbers.join(", ");
+    }
+</script>
+
+</html>

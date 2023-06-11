@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Map Example 1</title>
+    <script>
+        const vegetableMap = new Map();
+        vegetableMap.set("carrot", 10);
+        vegetableMap.set("broccoli", 15);
+        vegetableMap.set("tomato", 8);
+        vegetableMap.set("cabbage", 12);
+
+        console.log("Value of carrot:", vegetableMap.get("carrot"));
+        console.log("Value of broccoli:", vegetableMap.get("broccoli"));
+        console.log("Value of tomato:", vegetableMap.get("tomato"));
+        console.log("Value of cabbage:", vegetableMap.get("cabbage"));
+
+        vegetableMap.forEach((value, key) => {
+            console.log(`Vegetable: ${key}, Value: ${value}`);
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Map Example 1</h1>
+    <script src="script.js"></script>
+</body>
+
+</html>

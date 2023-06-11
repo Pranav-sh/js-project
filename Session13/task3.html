@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Program 3: Removing the First Element from an Array</title>
+
+</head>
+
+<body>
+    <h1>Program 3: Removing the First Element from an Array</h1>
+    <button onclick="removeElement()">Remove First Element</button>
+    <p id="result">Array: 1, 2, 3, 4, 5</p>
+</body>
+<script>
+    let numbers = [1, 2, 3, 4, 5];
+
+    function removeElement() {
+        // Remove the element from the starting index of the array
+        numbers.shift();
+
+        // Display the updated array on the document
+        document.getElementById("result").innerHTML = "Array: " + numbers.join(", ");
+    }
+</script>
+
+</html>

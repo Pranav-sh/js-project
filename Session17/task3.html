@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Program 3: Square and Area</title>
+    <script>
+        class Shape {
+            constructor(side) {
+                this.side = side;
+            }
+        }
+        class Square extends Shape {
+            calculateArea() {
+                return this.side * this.side;
+            }
+        }
+
+        const side = parseFloat(prompt("Enter the side of the square:"));
+        const square = new Square(side);
+        const area = square.calculateArea();
+
+        console.log("The area of the square is: " + area);
+    </script>
+</head>
+
+<body>
+    <h1>Program 3: Square and Area</h1>
+    <script src="script3.js"></script>
+</body>
+
+</html>

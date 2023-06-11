@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Program 3: Calculating the Power of a Number</title>
+    <script>
+        function calculatePower() {
+            var base = parseInt(document.getElementById('baseNumber').value);
+            var power = Math.pow(base, 2);
+
+            document.getElementById('powerResult').innerHTML = "Power Result: " + power;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Program 3: Calculating the Power of a Number</h1>
+    <label for="baseNumber">Enter a number:</label>
+    <input type="number" id="baseNumber">
+    <button onclick="calculatePower()">Calculate Power</button>
+    <p id="powerResult">Power Result: </p>
+</body>
+
+</html>

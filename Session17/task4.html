@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Program 4: Students and Average</title>
+    <script>
+        class Student {
+            constructor(name, marks) {
+                this.name = name;
+                this.marks = marks;
+            }
+
+            calculateAverage() {
+                const sum = this.marks.reduce((total, mark) => total + mark, 0);
+                return sum / this.marks.length;
+            }
+        }
+
+        const students = [{
+            name: "pranav",
+            marks: [1, 2, 3, 4]
+        }];
+        students.forEach((student) => {
+            const studentObj = new Student(student.name, student.marks);
+            const average = studentObj.calculateAverage();
+
+            console.log(`The name of the student is ${student.name} and the average of all marks (${student.marks.join(", ")}) is: ${average}`);
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Program 4: Students and Average</h1>
+    <script src="script4.js"></script>
+</body>
+
+</html>
